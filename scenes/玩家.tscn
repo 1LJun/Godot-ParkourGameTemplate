@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://cprn0166lcb5b"]
+
+[ext_resource type="Texture2D" uid="uid://bvwdl88r8gf3x" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png" id="1_aj20j"]
+[ext_resource type="Script" uid="uid://dnp76gf0tyban" path="res://scripts/player.gd" id="1_xdp2k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj564"]
+atlas = ExtResource("1_aj20j")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdp2k"]
+atlas = ExtResource("1_aj20j")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd6lh"]
+atlas = ExtResource("1_aj20j")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt451"]
+atlas = ExtResource("1_aj20j")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rj564"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj564")
+}],
+"loop": false,
+"name": &"待机",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdp2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd6lh")
+}],
+"loop": true,
+"name": &"行走",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt451")
+}],
+"loop": false,
+"name": &"跳跃",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt451"]
+size = Vector2(12, 16)
+
+[node name="玩家" type="CharacterBody2D"]
+script = ExtResource("1_xdp2k")
+
+[node name="动画" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_rj564")
+animation = &"行走"
+autoplay = "待机"
+frame_progress = 0.0105337
+
+[node name="碰撞体" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_qt451")

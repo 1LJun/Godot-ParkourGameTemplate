@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkmoi7baqk653"]
+
+[ext_resource type="Script" uid="uid://dg1exp77ecckv" path="res://scripts/luckyBlock.gd" id="1_atx5r"]
+[ext_resource type="Texture2D" uid="uid://vk0n0glnqys6" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_1cxv1"]
+[ext_resource type="PackedScene" uid="uid://cfypdn65gcgvp" path="res://scenes/钻石.tscn" id="2_8bpbg"]
+[ext_resource type="AudioStream" uid="uid://o8whbjqri2pj" path="res://assets/brackeys_platformer_assets/sounds/power_up.wav" id="3_8bpbg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmiwm"]
+atlas = ExtResource("2_1cxv1")
+region = Rect2(198, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7fij"]
+atlas = ExtResource("2_1cxv1")
+region = Rect2(198, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62prc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmiwm")
+}],
+"loop": true,
+"name": &"完毕",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7fij")
+}],
+"loop": true,
+"name": &"默认",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thu1u"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5eiy"]
+size = Vector2(18, 5)
+
+[sub_resource type="Animation" id="Animation_atx5r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("动画:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1cxv1"]
+resource_name = "new_animation"
+length = 0.25
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("动画:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8bpbg"]
+_data = {
+&"RESET": SubResource("Animation_atx5r"),
+&"顶": SubResource("Animation_1cxv1")
+}
+
+[node name="幸运方块" type="Area2D"]
+script = ExtResource("1_atx5r")
+"生成物" = ExtResource("2_8bpbg")
+
+[node name="动画" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_62prc")
+animation = &"默认"
+autoplay = "默认"
+
+[node name="刚体" type="StaticBody2D" parent="."]
+
+[node name="碰撞体" type="CollisionShape2D" parent="刚体"]
+shape = SubResource("RectangleShape2D_thu1u")
+
+[node name="检测" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_x5eiy")
+debug_color = Color(0.991962, 0, 0.258574, 0.42)
+
+[node name="音效" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(26, 22)
+stream = ExtResource("3_8bpbg")
+
+[node name="动态" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8bpbg")
+}
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

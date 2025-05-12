@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://8hdt0h38qxdd"]
+
+[ext_resource type="FontFile" uid="uid://bdtqu8relq5ol" path="res://fonts/方正基础像素体.ttf" id="1_o8csd"]
+[ext_resource type="Script" uid="uid://ddr02bpo4uioq" path="res://scripts/label_3.gd" id="2_pdbwr"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 186.0
+offset_right = 810.0
+offset_bottom = 287.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_o8csd")
+theme_override_font_sizes/font_size = 100
+text = "感谢游玩！！！"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 292.0
+offset_right = 901.0
+offset_bottom = 393.0
+theme_override_colors/font_color = Color(0.694719, 0.796347, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_o8csd")
+theme_override_font_sizes/font_size = 75
+text = "--by 1LJun_--"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 12.0
+offset_right = 1123.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.866667, 0.0431373, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_o8csd")
+theme_override_font_sizes/font_size = 50
+text = "X请关闭窗口退出游戏"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_top = 429.0
+offset_right = 713.0
+offset_bottom = 530.0
+theme_override_colors/font_color = Color(0.941919, 0.781178, 1.15514e-06, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_o8csd")
+theme_override_font_sizes/font_size = 75
+text = "你的最终得分是：XXX"
+script = ExtResource("2_pdbwr")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://7odqspiyxm8k"]
+
+[ext_resource type="Script" uid="uid://d4a2dv3wbq7l2" path="res://scripts/死亡区块.gd" id="1_u6i6i"]
+[ext_resource type="AudioStream" uid="uid://if0x3kl4te4i" path="res://audios/se_p_dead.ogg" id="2_tik11"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tik11"]
+
+[node name="死亡区块" type="Area2D"]
+script = ExtResource("1_u6i6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_tik11")
+
+[node name="爱你怎么似了" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(9, 6)
+stream = ExtResource("2_tik11")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

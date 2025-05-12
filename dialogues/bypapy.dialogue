@@ -1,0 +1,9 @@
+~ start
+set G.is_in_dialog = true
+你好啊伙计，当你玩到这里说明这个游戏已经到达尽头了
+本来我是想把旁边这位papyrus设计成一个boss的
+但是由于时间问题没去做
+总之，感谢你下载我的项目，能否在github给我打个星，谢谢啦
+——1LJun_留
+set G.is_in_dialog = false
+=> END

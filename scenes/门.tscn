@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bo4hgxlx6saf3"]
+
+[ext_resource type="Script" uid="uid://s0j26js34llu" path="res://scripts/门.gd" id="1_ynxum"]
+[ext_resource type="Texture2D" uid="uid://vk0n0glnqys6" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="3_a6fbn"]
+[ext_resource type="FontFile" uid="uid://bdtqu8relq5ol" path="res://fonts/方正基础像素体.ttf" id="4_3tfgf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynxum"]
+atlas = ExtResource("3_a6fbn")
+region = Rect2(180, 93, 18, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxq8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynxum")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpdul"]
+size = Vector2(30, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svols"]
+size = Vector2(18, 22)
+
+[node name="门" type="Area2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_ynxum")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_kxq8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_kpdul")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_svols")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="提示" type="Label" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 31.0
+offset_bottom = -9.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_3tfgf")
+theme_override_font_sizes/font_size = 16
+text = "按Z互动"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

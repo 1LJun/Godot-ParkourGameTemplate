@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://db858gav2lwnp"]
+
+[ext_resource type="Script" uid="uid://dvi2tf01ilhtq" path="res://scripts/coin.gd" id="1_vftyq"]
+[ext_resource type="Texture2D" uid="uid://vk0n0glnqys6" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_uor22"]
+[ext_resource type="AudioStream" uid="uid://bbq38dnahgy31" path="res://assets/brackeys_platformer_assets/sounds/coin.wav" id="3_uor22"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfhb5"]
+atlas = ExtResource("2_uor22")
+region = Rect2(198, 126, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2wca"]
+atlas = ExtResource("2_uor22")
+region = Rect2(216, 126, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxts1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfhb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2wca")
+}],
+"loop": true,
+"name": &"默认",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s7mh"]
+size = Vector2(8, 10)
+
+[node name="金币" type="Area2D"]
+script = ExtResource("1_vftyq")
+
+[node name="动画" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jxts1")
+animation = &"默认"
+autoplay = "默认"
+frame_progress = 0.673554
+
+[node name="碰撞体" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6s7mh")
+
+[node name="音效" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uor22")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="音效" to="." method="_on_音效_finished"]

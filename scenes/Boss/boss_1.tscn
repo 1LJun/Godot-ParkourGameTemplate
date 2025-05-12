@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://02bgwspu2kyv"]
+
+[ext_resource type="Texture2D" uid="uid://c1bpomhwevbpm" path="res://assets/spr_papyrus_spin/spr_papyrus_spin_0.png" id="1_h7xb0"]
+[ext_resource type="Texture2D" uid="uid://dw0sd3a52y6rm" path="res://assets/spr_papyrus_spin/spr_papyrus_spin_1.png" id="2_lo5ei"]
+[ext_resource type="Texture2D" uid="uid://dbwoiui7bnwtl" path="res://assets/spr_papyrus_spin/spr_papyrus_spin_2.png" id="3_t7pks"]
+[ext_resource type="Texture2D" uid="uid://cgeotsrvlayv" path="res://assets/spr_papyrus_spin/spr_papyrus_spin_3.png" id="4_fd0j8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sxyh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h7xb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lo5ei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t7pks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fd0j8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ft4sg"]
+size = Vector2(20, 42)
+
+[node name="boss1" type="StaticBody2D"]
+
+[node name="papyrus" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8sxyh")
+autoplay = "default"
+frame_progress = 0.865476
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ft4sg")

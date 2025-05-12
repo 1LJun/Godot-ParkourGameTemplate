@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://6y7h6s227ruy"
+path="res://.godot/imported/bypapy.dialogue-94a611d03d65c493952995f2f0849c63.tres"
+
+[deps]
+
+source_file="res://dialogues/bypapy.dialogue"
+dest_files=["res://.godot/imported/bypapy.dialogue-94a611d03d65c493952995f2f0849c63.tres"]
+
+[params]
+
+defaults=true

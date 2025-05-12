@@ -1,0 +1,6 @@
+~ start
+set G.is_in_dialog = true
+你好，我是一个告示牌（点击继续/按Space或Enter）
+记住了，以后遇到对话点击屏幕/按Space或Enter继续
+set G.is_in_dialog = false
+=> END

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfypdn65gcgvp"]
+
+[ext_resource type="Script" uid="uid://cbmm5nbskiadf" path="res://scripts/diamond.gd" id="1_t4701"]
+[ext_resource type="Texture2D" uid="uid://vk0n0glnqys6" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_uorjd"]
+[ext_resource type="AudioStream" uid="uid://bbq38dnahgy31" path="res://assets/brackeys_platformer_assets/sounds/coin.wav" id="3_t4701"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4701"]
+atlas = ExtResource("2_uorjd")
+region = Rect2(126, 54, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxts1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4701")
+}],
+"loop": true,
+"name": &"默认",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s7mh"]
+size = Vector2(8, 10)
+
+[node name="钻石" type="Area2D"]
+script = ExtResource("1_t4701")
+
+[node name="动画" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jxts1")
+animation = &"默认"
+autoplay = "默认"
+frame_progress = 0.0855759
+
+[node name="碰撞体" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6s7mh")
+
+[node name="音效" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_t4701")
+pitch_scale = 1.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="音效" to="." method="_on_音效_finished"]

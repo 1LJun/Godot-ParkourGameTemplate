@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bx51n8xegp6ki"
+path="res://.godot/imported/告示牌测试.dialogue-bacd60097b3495be95c8736089dd5456.tres"
+
+[deps]
+
+source_file="res://dialogues/告示牌测试.dialogue"
+dest_files=["res://.godot/imported/告示牌测试.dialogue-bacd60097b3495be95c8736089dd5456.tres"]
+
+[params]
+
+defaults=true
